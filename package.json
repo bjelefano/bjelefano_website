@@ -1,0 +1,27 @@
+{
+  "name": "bjelefano_website",
+  "version": "1.0.0",
+  "description": "My personal portfolio website.",
+  "main": "server.js",
+  "scripts": {
+    "setup": "npm install && cd client && npm install && cd ..",
+    "build-run": "cd client && npm run build && cd .. && node server.js",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjelefano/bjelefano_website.git"
+  },
+  "author": "Brandon Elefano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjelefano/bjelefano_website/issues"
+  },
+  "homepage": "https://github.com/bjelefano/bjelefano_website#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3"
+  }
+}
