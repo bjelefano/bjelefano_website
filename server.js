@@ -17,6 +17,12 @@ app.use('/static', express.static('/images'))
 // Serve the build
 app.use(express.static(path.join(__dirname, "/")));
 
+app.get("/blog", (req, res) => {
+    // send blog
+    // res.sendFile(path.join(__dirname, "/blog/blog.html"));
+    res.status(404);
+});
+
 app.get("/resume", (req, res) => {
     // send resume.pdf
     res.sendFile(path.join(__dirname, "/assets/resume.pdf"));
@@ -35,10 +41,10 @@ app.get("*", (req, res) => {
     if (!goodPageRoutes.includes(req.url)) {
         // if url not in expected page routes, set status to 404.
         res.status(404);
+    } else {
+        // send index.html
+        res.sendFile(path.join(__dirname, "/index.html"));
     }
-
-    // send index.html
-    res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 /*************************************************/
