@@ -8,7 +8,7 @@ const app = express();
 const path = require('path')
 
 // For static assets
-app.use('/static', express.static('/images'))
+app.use('/static', express.static('images'))
 
 /*********************************************************/
 
