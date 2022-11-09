@@ -3,9 +3,13 @@
 const log = console.log;
 
 const express = require("express");
+var bodyParser = require('body-parser')
 // starting the express server
 const app = express();
 const path = require('path')
+
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // For static assets
 app.use('/static', express.static('images'))
@@ -17,10 +21,26 @@ app.use('/static', express.static('images'))
 // Serve the build
 app.use(express.static(path.join(__dirname, "/")));
 
+app.post("/", urlencodedParser, (req, res) => {
+    // send
+    const m_name = req.body.name
+    const m_email = req.body.email
+    const m_message = req.body.message
+
+
+
+    res.sendFile(path.join(__dirname, "/index.html"));
+});
+
+
+app.get("/404", (req, res) => {
+    // send 404
+    res.sendFile(path.join(__dirname, "/404/404.html"));
+});
+
 app.get("/blog", (req, res) => {
     // send blog
-    // res.sendFile(path.join(__dirname, "/blog/blog.html"));
-    res.status(404);
+    res.redirect("/404");
 });
 
 app.get("/resume", (req, res) => {
