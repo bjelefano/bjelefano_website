@@ -40,7 +40,7 @@ app.get("/404", (req, res) => {
 
 app.get("/blog", (req, res) => {
     // send blog
-    res.redirect("/404");
+    res.redirect("https://bjelefano.medium.com/");
 });
 
 app.get("/resume", (req, res) => {
